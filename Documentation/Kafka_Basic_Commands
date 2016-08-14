@@ -1,0 +1,10 @@
+Kafka Basic Commands:
+
+If you don’t have any zookeeper running  use which comes with kafka server bundle:
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Run Kafka
+bin/kafka-server-start.sh config/server.properties
+
+Check offset for a topic
+bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic test --time -1
