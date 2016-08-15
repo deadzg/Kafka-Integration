@@ -33,7 +33,7 @@ public class SimpleCamelKafkaProducer {
 		
 		
 		//producer.sendBodyAndHeaders("seda:db", "Camel Kafka test message " , headerMap);
-		producer.sendBodyAndHeader("IT test message", KafkaConstants.KEY, "1");
+		producer.sendBodyAndHeader("IT test message", KafkaConstants.KEY, "0");
 		Thread.currentThread().join();
 		
 		

@@ -5,7 +5,7 @@ import org.apache.camel.spring.SpringCamelContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-public class SimpleCamelKafka {
+public class SimpleCamelKafkaConsumer {
 	
 	public static void main(String[] args) throws Exception {
 		ApplicationContext appContext = new FileSystemXmlApplicationContext("config/kafkaCamelContext.xml");
