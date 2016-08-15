@@ -11,7 +11,7 @@ public class CamelKafkaMessageConsumer implements Processor{
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		
-		//Thread.sleep(60000); This is for generating group dead and removed scenario
+		Thread.sleep(50000); //This is for generating group dead and removed scenario
 		System.out.println("Inside the camelKafkaMessageConsumer");
 		System.out.println("Message:" + exchange.getIn().getBody().toString());
 		System.out.println("Partition Key:" + exchange.getIn().getHeader(KafkaConstants.PARTITION_KEY));

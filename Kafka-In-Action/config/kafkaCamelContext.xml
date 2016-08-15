@@ -18,8 +18,18 @@
 	<camelContext id="kafkaRoutes" xmlns="http://camel.apache.org/schema/spring">
 		
 		<template id="myTemplate" defaultEndpoint="direct:start"/>
-		<route id="kafka">
+		<!-- kafkaDefaultSessionTimeout : This route is to use consumer with default settings 
+		https://github.com/apache/camel/blob/master/components/camel-kafka/src/main/java/org/apache/camel/component/kafka/KafkaConfiguration.java
+		-->
+	<!-- 	<route id="kafkaDefaultSessionTimeout">
 			<from uri="kafka:localhost:9092?topic=test&amp;groupId=group1&amp;consumersCount=2"/>
+			<to uri="bean:camelKafkaMessageConsumer"/>
+		</route>  -->
+		
+		
+		<!-- kafkaCustomSessionTimeout: This route is to solve the consumer dead issue, caused because of consumer taking longer time to process -->
+		<route id="kafkaCustomSessionTimeout">
+			<from uri="kafka:localhost:9092?topic=test&amp;groupId=group2&amp;consumersCount=2&amp;consumerRequestTimeoutMs=65000&amp;sessionTimeoutMs=60000"/>
 			<to uri="bean:camelKafkaMessageConsumer"/>
 		</route>
 	</camelContext>
