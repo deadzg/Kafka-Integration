@@ -34,8 +34,6 @@
 		</route>
 	</camelContext>
 	<!--	 
-	<bean id="bean:camelKafkaMessageConsumer" class="com.smalwe.camel.TestKafka"/>
-	
 	<bean id="prop" class="java.util.Properties"/>
 	
 	<bean id="msgProducer" class="com.smalwe.kafka.SimpleProducer">

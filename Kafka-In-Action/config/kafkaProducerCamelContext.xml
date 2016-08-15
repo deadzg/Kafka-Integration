@@ -1,0 +1,32 @@
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+ 	xmlns:p="http://www.springframework.org/schema/p"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:context="http://www.springframework.org/schema/context"
+ 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+   		http://camel.apache.org/schema/spring 
+   		http://camel.apache.org/schema/spring/camel-spring.xsd
+		http://www.springframework.org/schema/context 
+    	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+<!-- this context will house all the routes that we need for integrating with testApp  tcp://id2portalapp2-0.sysint.local:61616 -->
+	
+	<context:annotation-config/>
+    <context:component-scan base-package="com.smalwe.camel.kafka" />
+
+	<camelContext id="kafkaRoutes" xmlns="http://camel.apache.org/schema/spring">
+		
+		<template id="myTemplate" defaultEndpoint="direct:start"/>
+		 <route id="kafkaProducer">
+			<from uri="direct:start" />
+			<to uri="kafka:localhost:9092?topic=test&amp;partitioner=com.smalwe.kafka.SimplePartitioner"/>
+		</route>
+		
+	</camelContext>
+	<bean id="Driver" class = "com.smalwe.camel.kafka.SimpleCamelKafkaProducer">
+		
+		<property name="producer" ref="myTemplate"/>
+	</bean>
+	
+</beans>

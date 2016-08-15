@@ -21,9 +21,12 @@ public class SimplePartitioner implements Partitioner {
 	
 	@Override
 	public int partition(String topic, Object key, byte[] keyBytes, Object value, byte[] valueBytes, Cluster cluster) {
-		System.out.println("Came in partitioner");
+		System.out.println("Came in partitioner with key:" + key);
 		List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
-		return 1;
+		int ky = Integer.parseInt(key.toString());
+		int partition = ky % 2;
+		System.out.println("Partition Assigned:" + partition);
+		return partition;
 	}
 
 	@Override
