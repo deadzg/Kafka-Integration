@@ -1,0 +1,66 @@
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+ 	xmlns:p="http://www.springframework.org/schema/p"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:context="http://www.springframework.org/schema/context"
+ 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+   		http://camel.apache.org/schema/spring 
+   		http://camel.apache.org/schema/spring/camel-spring.xsd
+		http://www.springframework.org/schema/context 
+    	http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+<!-- this context will house all the routes that we need for integrating with testApp  tcp://id2portalapp2-0.sysint.local:61616 -->
+	
+	<context:annotation-config/>
+    <context:component-scan base-package="com.smalwe.camel.kafka" />
+
+	<camelContext id="kafkaRoutes" xmlns="http://camel.apache.org/schema/spring">
+		
+		<template id="myTemplate" defaultEndpoint="direct:start"/>
+		<route id="kafka">
+			<from uri="kafka:localhost:9092?topic=test&amp;groupId=group1&amp;consumersCount=2"/>
+			<to uri="bean:camelKafkaMessageConsumer"/>
+		</route>
+	</camelContext>
+	<!--	 
+	<bean id="bean:camelKafkaMessageConsumer" class="com.smalwe.camel.TestKafka"/>
+	
+	<bean id="prop" class="java.util.Properties"/>
+	
+	<bean id="msgProducer" class="com.smalwe.kafka.SimpleProducer">
+		<property name="props" ref="prop"/>
+	</bean>
+
+	<bean id="Driver" class = "cm.smalwe.camel.Driver">
+		<property name="kafkaProp" ref="prop"/>
+		<property name="msgProducer" ref="msgProducer"/>
+		<property name="hashMp" ref="map"/>
+		<property name="producer" ref="myTemplate"/>
+	</bean>
+	 
+	<bean id="kafkaConfigurationFile" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	  <property name="locations">
+	    <list>
+		 <value>config/kafkaSettings.properties</value>  
+	    </list>
+	  </property>
+	 </bean>
+	
+	
+	<bean id="map" class="java.util.HashMap" scope="prototype" >
+	    <constructor-arg>
+	        <map key-type="java.lang.String" value-type="java.lang.Object">
+	            <entry key="bootstrap.servers" value="localhost:9092" />
+	            <entry key="key.serializer" value="org.apache.kafka.common.serialization.StringSerializer" />
+	            <entry key="value.serializer" value="org.apache.kafka.common.serialization.StringSerializer" />
+	        </map>
+	    </constructor-arg>
+	</bean>
+	<bean id="kafkaBeanTest" class = "cm.smalwe.camel.KafkaBeanTest">
+		<property name="hashMp" ref="map"/>
+		
+		</bean>
+	-->
+	
+</beans>
