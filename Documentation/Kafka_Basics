@@ -1,0 +1,33 @@
+Excerpts of Kafka Paper:
+
+Drawbacks with existing messaging framework:
+ - JMS has no API to explicitly batch multiple messages into single request, thus each message requires full TCP/IP roundtrip
+ - No easy way to partition and store messages on multiple m/c
+- They assume near immediate consumption of messages, thus their performance degrades if messages are allowed to accumulate
+
+Existing Log Aggregators in Market:
+Scribe -> Facebook
+HDFS Flume -> CloudEra
+HedWig -> Yahoo!
+
+Kafka Architechture:
+A producer can publish messages to the topic. They are stored at a set of servers called brokers.. A consumer can subscribe to one or more topics from the brokers and consumer then subscribed messages by pulling data from the brokers.
+
+It uses message stream iterator which never terminates
+
+Each partition of a topic corresponds to logical log. A log is implemented as a set of segment files of approximately the same size (Eg: 1GB) Every time a publisher publishes message to a partition , the broker simply appends the message to the lst segment file. For better performance the segment file is flushed to disk only after configurable number of messages have been published or a certain amount of time has elapsed. A message is only exposed to the consumer after it is flushed.
+Unlike typical message systems , a message stored in Kafka doesn’t have an explicit message id. Instead , each message is addressed by it’s logical offset in the log.
+Explicit caching of messages in memory is avoided , instead Kafka relies on underlying files system page caching.
+Unlike other messaging systems, Kafka information about how much each consumer has consumed is not maintained by the broker, but by the consumer itself.
+A consumer can deliberatly rewind back to an old offset and re-consume data.
+Partition within a topic is the smallest level of parallelism.
+In order to truely balance  the load we require more partitions in a topic than the consumers in each group.
+To facilitate coordination Zookeeper is used:
+ -Detecting the addition and removal of brokers and consumers
+-Triggering a rebalance process in each consumer when the above events happen
+-Maintaining consumption relationship and keeping track of the consumed offset of each partition
+
+Kafka only guarantees atleast once delivery
+Kafka guarantees ordering
+To avoid corruption Kafka stores a CRC for each message in log, if there is any I/O error on the broker , Kakfka run a recovery process to remove those messages with inconsistent CRCs.
+Avro is used as the serialization protocol.
