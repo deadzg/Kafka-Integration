@@ -29,7 +29,7 @@
 		
 		<!-- kafkaCustomSessionTimeout: This route is to solve the consumer dead issue, caused because of consumer taking longer time to process -->
 		<route id="kafkaCustomSessionTimeout">
-			<from uri="kafka:localhost:9092?topic=test&amp;groupId=group2&amp;consumersCount=2&amp;consumerRequestTimeoutMs=65000&amp;sessionTimeoutMs=60000"/>
+			<from uri="kafka:localhost:9092?topic=test&amp;groupId=group3&amp;consumersCount=2&amp;consumerRequestTimeoutMs=65000&amp;sessionTimeoutMs=60000&amp;autoOffsetReset=earliest"/>
 			<to uri="bean:camelKafkaMessageConsumer"/>
 		</route>
 	</camelContext>
