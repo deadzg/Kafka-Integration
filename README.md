@@ -1,4 +1,4 @@
-# Kafka-Integration
+# Kafka-Integration  
 This project contains various ways kafka can be used along with some sample codes.
 
 - Some basic Kafka Commands
