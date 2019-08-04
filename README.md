@@ -1,9 +1,5 @@
-# Kafka-Integration  
-This project contains various ways kafka can be used along with some sample codes.
+# Kafka Integration
 
-- Some basic Kafka Commands
-- Sample Code for Producer and Consumer
-- Integration of Kafka with Camel
-
-Component Versions
-- Kafka Server : kafka_2.11-0.9.0.1 
+**Envirionment Setup**
+- Confluent version used : 5.3.0
+- Java version used : 1.8
