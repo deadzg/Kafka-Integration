@@ -45,5 +45,5 @@ Add this at the end of the file: `auto.create.topics.enable=false`
 
 
 # References
-https://gist.github.com/ursuad/e5b8542024a15e4db601f34906b30bb5
-https://docs.confluent.io/current/schema-registry/docs/using.html
+- https://gist.github.com/ursuad/e5b8542024a15e4db601f34906b30bb5
+- https://docs.confluent.io/current/schema-registry/docs/using.html
