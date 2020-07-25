@@ -24,6 +24,14 @@ Note : Number of partitions can only be increased
 `cd /confluent-5.1.0/etc/kafka/server.properties`
 Add this at the end of the file: `auto.create.topics.enable=false`
 
+- Print all the messages in a topic with headers
+```kafkacat -b localhost:29092 -t my-topic -C \
+  -f '\nKey (%K bytes): %k
+  Value (%S bytes): %s
+  Timestamp: %T
+  Partition: %p
+  Offset: %o
+  Headers: %h\n'```
 
 ## Consumer/Producer Management
 - CLI Consumer : `bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic my-topic`
@@ -50,3 +58,4 @@ Eg: k1:v1
 # References
 - https://gist.github.com/ursuad/e5b8542024a15e4db601f34906b30bb5
 - https://docs.confluent.io/current/schema-registry/docs/using.html
+- https://github.com/edenhill/kafkacat
