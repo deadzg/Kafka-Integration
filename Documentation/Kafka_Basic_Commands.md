@@ -32,6 +32,9 @@ Add this at the end of the file: `auto.create.topics.enable=false`
 
 - CLI Producer: `bin/kafka-console-producer --topic my-topic --broker-list localhost:9092`
 
+- CLI Producer with Key Value: `bin/kafka-console-producer.sh --topic my-topic --broker-list localhost:29092 --property "key.separator=:" --property "parse.key=true"`
+Eg: k1:v1
+
 - List consumer groups : `bin/kafka-consumer-groups --list --bootstrap-server localhost:9092`
 
 - Describe consumer group: `bin/kafka-consumer-groups --describe --group group-id --bootstrap-server localhost:9092`
