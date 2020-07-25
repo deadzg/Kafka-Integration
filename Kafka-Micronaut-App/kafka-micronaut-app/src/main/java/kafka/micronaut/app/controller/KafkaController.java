@@ -3,6 +3,8 @@ package kafka.micronaut.app.controller;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.reactivex.Single;
+import io.reactivex.disposables.Disposable;
 import kafka.micronaut.app.MyProducer;
 import org.apache.kafka.clients.producer.Producer;
 
@@ -19,7 +21,13 @@ public class KafkaController {
 
     @Get(produces = MediaType.TEXT_PLAIN, value = "/producer")
     public String customer() {
-        kafkaProducer.sendMessage("key1", "value1");
+        kafkaProducer.sendMessage("key1", "value1", "header1");
+
+        Single<String> singleObservable =  kafkaProducer.sendBody("k2", Single.just("v2"));
+
+        singleObservable.subscribe();
+
+
         return "Kafka Producer Returned";
     }
 }

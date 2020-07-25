@@ -1,4 +1,16 @@
 micronaut:
   application:
     name: kafkaMicronautApp
-kafka.bootstrap.servers: localhost:29092
+    token: ertyu
+kafka:
+  bootstrap:
+    servers: localhost:29092
+  producers:
+    default:
+      retries: 5
+    my-producer-id:
+      key:
+        serializer: org.apache.kafka.common.serialization.StringSerializer
+      value:
+        serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 10
