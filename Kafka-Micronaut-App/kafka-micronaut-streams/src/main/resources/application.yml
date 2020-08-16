@@ -2,3 +2,10 @@ micronaut:
   application:
     name: kafkaMicronautStreams
 kafka.bootstrap.servers: localhost:29092
+kafka:
+  streams:
+    word-count:
+      num:
+        stream:
+          threads: 2
+

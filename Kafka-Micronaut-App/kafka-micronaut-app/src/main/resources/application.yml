@@ -14,3 +14,22 @@ kafka:
       value:
         serializer: org.apache.kafka.common.serialization.StringSerializer
       retries: 10
+    file-producer-id:
+      value:
+        serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+      key:
+        serializer: kafka.micronaut.app.FileUploadSer
+      retries: 10
+
+  consumers:
+    file-upload-consumer:
+      value:
+        deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      key:
+        deserializer: kafka.micronaut.app.FileUploadDe
+
+  streams:
+    file-data-stream:
+      num:
+        stream:
+          threads: 2
