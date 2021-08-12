@@ -18,15 +18,9 @@ public class Application {
         props.put("acks", "all");
         props.put("linger.ms", 1);
 
+        SimpleProducer simpleProducer = new SimpleProducer(props);
+        simpleProducer.produceNumbersSmall();
 
-
-//        SimpleProducer simpleProducer = new SimpleProducer(props);
-//        simpleProducer.produceNumbersSmall();
-
-        OrderProducer orderProducer = new OrderProducer(props);
-        orderProducer.producerOrders();
-          AvroMessageProducer producer = new AvroMessageProducer();
-        producer.producerOrders();
 
     }
 }
