@@ -1,0 +1,19 @@
+{
+  "namespace": "com.smalwe.kafka.explore.model",
+  "type": "record",
+  "name": "Item",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "category",
+      "type": "string"
+    },
+    {
+      "name": "price",
+      "type": "float"
+    }
+  ]
+}
