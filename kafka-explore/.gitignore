@@ -7,3 +7,6 @@ build/
 .gradletasknamecache
 gradle-app.setting
 !gradle-wrapper.jar
+.idea/*
+
+avro-tools-1.10.2.jar
