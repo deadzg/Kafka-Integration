@@ -9,4 +9,5 @@ gradle-app.setting
 !gradle-wrapper.jar
 .idea/*
 
+*.log
 avro-tools-1.10.2.jar

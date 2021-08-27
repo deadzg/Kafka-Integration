@@ -22,5 +22,7 @@ public class Application {
         simpleProducer.produceNumbersSmall();
 
 
+        SimpleProducerV2 simpleProducerV2 = new SimpleProducerV2();
+        simpleProducerV2.producerNumbers();
     }
 }

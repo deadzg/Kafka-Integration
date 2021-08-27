@@ -40,7 +40,7 @@ public class ItemAvroProducer {
 
         Producer<String, Item> producer = createProducer();
 
-        IntStream.range(1, 10).forEach(index->{
+        IntStream.range(1, 1000).forEach(index->{
             Future<RecordMetadata> recordMetaData = producer.send(new ProducerRecord<>(TOPIC, "key" + index, generateItem(index)));
 
             try {

@@ -24,6 +24,7 @@ public class SimpleProducer {
 
     private Properties producerProperties;
 
+
     public SimpleProducer(Properties producerProperties) {
         this.producerProperties = producerProperties;
         this.producerProperties .put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
@@ -38,7 +39,7 @@ public class SimpleProducer {
 
         Future<RecordMetadata> recordMetaData = null;
         Producer<String, String> producer = new KafkaProducer<>(producerProperties);
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 10; i++) {
             recordMetaData = producer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(i), Integer.toString(i)));
             System.out.println("Offset:" + recordMetaData.get().offset() +
                                 " Partition:" + recordMetaData.get().partition() +
