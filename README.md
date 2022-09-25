@@ -1,3 +1,10 @@
+# Task List:
+- Write a Producer with simple Serializer
+- Write a Producer with complex Serializer
+- Write a Producer with Kafka running on Confluent Cloud
+- Testcases for the Producer
+- Monitor Kafka Cluster and Clients
+
 # Kafka Integration
 
 ## Envirionment Setup
@@ -11,4 +18,15 @@
 - Compile the code from the root after unzipping the above file: `./gradlew jar -PscalaVersion=2.12.10`
 - Bring Env up: `docker-compose up`
 - Bring the env down: `docker-compose down`
+
+
+## Automation Script
+- Write script to spin up local kafka instance
+- Write script to spin up local confluent kafka with schema registry instance
+- Write script to:
+    - Create topic
+    - Delete records in topic
+    - Delete topic
+- Write script to create Java based project for Kafka
+- Write script to create Java based project for Kafka Streams
 

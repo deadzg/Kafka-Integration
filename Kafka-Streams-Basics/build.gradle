@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.smalwe.kstreams'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: '3.2.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task runDSL(type: JavaExec) {
+    main = 'com.smalwe.kstreams.MyDSLExample'
+    classpath sourceSets.main.runtimeClasspath
+}
+
+task runProcessorAPI(type: JavaExec) {
+    main = 'com.smalwe.kstreams.MyProcessorAPIExample'
+    classpath sourceSets.main.runtimeClasspath
+}
